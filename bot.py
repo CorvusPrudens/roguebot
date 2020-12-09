@@ -2,6 +2,7 @@
 import json
 import re
 import sys
+from leveldata import *
 
 class Bot:
     def __init__(self, savepath):
@@ -9,6 +10,7 @@ class Bot:
         self.funcDict = {
             '.coins': self.fCoins,
             '.map': self.fMap,
+            '.hello': self.fHello,
         }
         commRegexString = '('
         for key in self.funcDict:
@@ -33,7 +35,6 @@ class Bot:
             command = self.commRegex.search(message)
             if command != None:
                 self.funcDict[command.group(0)](message)
-        pass
 
     def fCoins(self, message):
         string = 'You have {} coins\n'.format(self.coins)
@@ -42,3 +43,6 @@ class Bot:
     def fMap(self, message):
         string = '.....\n'
         sys.stdout.write(string)
+
+    def fHello(self, message):
+        sys.stdout.write(concept2)
