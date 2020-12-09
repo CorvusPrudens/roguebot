@@ -45,4 +45,4 @@ class Bot:
         sys.stdout.write(string)
 
     def fHello(self, message):
-        sys.stdout.write(concept2)
+        sys.stdout.write(drawText("Hello\nit\'s time to get it"))
