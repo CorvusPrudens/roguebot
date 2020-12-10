@@ -18,6 +18,9 @@ class Bot:
         self.commRegex = re.compile(commRegexString[:-1] + ')\\b')
         self.coins = 0
         self.run = True
+        self.room = Room(width=19)
+        self.player = Player()
+        self.room.insert(self.player)
 
     def load():
         try:
@@ -41,8 +44,15 @@ class Bot:
         sys.stdout.write(string)
 
     def fMap(self, message):
-        string = '.....\n'
+        string = self.room.draw()
         sys.stdout.write(string)
 
     def fHello(self, message):
-        sys.stdout.write(drawText("Hello\nit\'s time to get it"))
+        sys.stdout.write(drawText("It's dengerous to go alone!\nTake this.", center=True))
+
+class Level:
+    __init__(self):
+        self.rooms = []
+
+    def addRoom(self, room):
+        self.rooms.append(room)
